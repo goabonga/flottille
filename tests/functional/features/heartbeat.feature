@@ -9,7 +9,7 @@ Feature: Heartbeat check
     Then the response status code should be 200
     And the response JSON should contain
     """
-      {
-        "status": "up"
-      }
+    {
+      "status": "up"
+    }
     """

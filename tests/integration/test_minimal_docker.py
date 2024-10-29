@@ -3,7 +3,7 @@ import httpx
 
 def test_minimal_container(docker_services, docker_ip):
     # Define the service name and port as per your docker-compose configuration
-    service_name = "backend"
+    service_name = "flottille"
     service_port = 8080  # Update this to match your docker-compose.yml
 
     # Retrieve the external port mapped to the service's internal port

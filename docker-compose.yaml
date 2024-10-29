@@ -1,5 +1,5 @@
 services:
-  backend:
+  flottille:
     build: 
       context: ./
       args:
@@ -7,4 +7,4 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./app:/app/app
+      - ./src:/app/src

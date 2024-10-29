@@ -7,5 +7,5 @@ if [ "$INSTALL_DEV" = true ]; then
   RELOAD_FLAG="--reload"
 fi
 
-poetry run uvicorn --workers 1 --host $HOST --port $PORT $RELOAD_FLAG app.core.api.main:app
+poetry run uvicorn --workers 1 --host $HOST --port $PORT $RELOAD_FLAG flottille.api.main:app
 
