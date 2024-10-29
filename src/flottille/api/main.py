@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from .config import AppSettings
+
 from .builder import FastAPIBuilder
+from .config import AppSettings
 
 settings = AppSettings()
 builder = FastAPIBuilder(settings)

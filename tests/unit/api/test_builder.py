@@ -1,8 +1,9 @@
 import pytest
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from flottille.api.config import AppSettings
+
 from flottille.api.builder import FastAPIBuilder
+from flottille.api.config import AppSettings
 
 
 @pytest.fixture

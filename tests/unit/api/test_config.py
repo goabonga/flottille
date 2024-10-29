@@ -1,7 +1,8 @@
 import pytest
-from pydantic import ValidationError
 from fastapi import Response
 from fastapi.responses import JSONResponse
+from pydantic import ValidationError
+
 from flottille.api.config import AppSettings
 
 # Sample test case to validate AppSettings defaults and environment-based overrides

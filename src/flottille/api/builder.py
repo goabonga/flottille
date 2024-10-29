@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from .config import AppSettings
+
 
 class FastAPIBuilder:
     def __init__(self, settings: AppSettings):

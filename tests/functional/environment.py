@@ -1,10 +1,9 @@
 # environment.py
-import os
 import subprocess
 import time
-import subprocess
+
 import httpx
-import time
+
 
 def wait_for_service(url, retries=5, delay=2):
     for _ in range(retries):

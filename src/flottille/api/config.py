@@ -1,9 +1,11 @@
-from typing import List, Dict, Any, Optional, Union, Callable, Type, Sequence
-from fastapi import Response, Depends
+from typing import Any, Callable, Dict, List, Optional, Sequence, Type, Union
+
+from fastapi import APIRouter, Depends, Response
 from fastapi.responses import JSONResponse
-from pydantic_settings import BaseSettings
-from pydantic import AnyHttpUrl, ConfigDict
 from fastapi.routing import APIRoute
+from pydantic import AnyHttpUrl
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from starlette.routing import BaseRoute
 
 
 def default_generate_unique_id(route: APIRoute) -> str:
@@ -54,7 +56,7 @@ class AppSettings(BaseSettings):
     servers: Optional[List[Dict[str, Union[str, Any]]]] = None
     """List of server details for OpenAPI specification."""
 
-    dependencies: Optional[List[Depends]] = None
+    dependencies: Optional[Sequence[Depends]] = None # type: ignore[valid-type]
     """Global dependencies applied to each path operation."""
 
     default_response_class: Type[Response] = JSONResponse
@@ -69,7 +71,7 @@ class AppSettings(BaseSettings):
     responses: Optional[Dict[Union[int, str], Dict[str, Any]]] = None
     """Custom responses to be added in OpenAPI schema."""
 
-    callbacks: Optional[List[APIRoute]] = None
+    callbacks: Optional[List[BaseRoute]] = None
     """Global OpenAPI callbacks."""
 
     swagger_ui_parameters: Optional[Dict[str, Any]] = None
@@ -105,7 +107,7 @@ class AppSettings(BaseSettings):
     deprecated: Optional[bool] = None
     """Marks all paths as deprecated in the OpenAPI schema."""
 
-    webhooks: Optional[Dict[str, Any]] = None
+    webhooks: Optional[APIRouter] = None
     """Global OpenAPI webhooks."""
 
     # Extra fields for server behavior
@@ -121,4 +123,4 @@ class AppSettings(BaseSettings):
     lifespan: Optional[Callable] = None
     """Context manager for application lifespan, replaces on_startup/on_shutdown."""
 
-    model_config = ConfigDict(env_prefix="APP_", env_file=".env")
+    model_config = SettingsConfigDict(env_prefix="APP_", env_file=".env")

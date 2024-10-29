@@ -1,5 +1,6 @@
 import httpx
 
+
 def test_minimal_container(docker_services, docker_ip):
     # Define the service name and port as per your docker-compose configuration
     service_name = "backend"

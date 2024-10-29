@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
+
 from flottille.api.main import app
+
 
 def test_app_creation():
     """Test that the FastAPI app is created and has the correct configuration."""
