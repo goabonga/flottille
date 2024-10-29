@@ -1,0 +1,10 @@
+services:
+  backend:
+    build: 
+      context: ./
+      args:
+        INSTALL_DEV: true
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app:/app/app
