@@ -25,7 +25,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: poetry install --with dev
+        run: poetry install --with dev --with api
 
       - name: Run ruff mypy 
         run: |
@@ -51,7 +51,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: poetry install --with dev
+        run: poetry install --with dev --with api
 
       - name: Run unit tests
         run: poetry run pytest --maxfail=1 --disable-warnings --cov=src --cov-report=xml --cov-report=term-missing:skip-covered --junitxml=junit.xml -o junit_family=legacy tests/unit
@@ -87,7 +87,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install dependencies with Poetry
-        run: poetry install --with dev
+        run: poetry install --with dev --with api
 
       - name: Run integration tests
         run: poetry run pytest tests/integration --disable-warnings
@@ -111,7 +111,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install dependencies with Poetry
-        run: poetry install --with dev
+        run: poetry install --with dev --with api
 
       - name: Run functional tests with Behave
         run: poetry run behave

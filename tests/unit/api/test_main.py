@@ -14,6 +14,6 @@ def test_app_creation():
 def test_root_endpoint():
     """Test the root endpoint response."""
     client = TestClient(app)
-    response = client.get("/")
+    response = client.get("/heartbeat")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello World"}
+    assert response.json() == {"status": "up"}
