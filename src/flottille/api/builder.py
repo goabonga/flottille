@@ -5,10 +5,41 @@ from .config import AppSettings
 
 
 class FastAPIBuilder:
+    """
+    A builder class to configure and create an instance of FastAPI with custom settings.
+
+    Parameters
+    ----------
+    settings : AppSettings
+        An instance of AppSettings that holds configuration details for the FastAPI app.
+
+    Methods
+    -------
+    build() -> FastAPI:
+        Configures and returns a FastAPI application instance based on the provided settings.
+    """
+
     def __init__(self, settings: AppSettings):
+        """
+        Initializes the FastAPIBuilder with the provided settings.
+
+        Parameters
+        ----------
+        settings : AppSettings
+            An instance containing configuration settings for the FastAPI application.
+        """
         self.settings = settings
 
     def build(self) -> FastAPI:
+        """
+        Builds and configures the FastAPI application based on the settings provided.
+
+        Returns
+        -------
+        FastAPI
+            A configured FastAPI instance ready for use with the specified settings.
+        """
+        # Initialize the FastAPI app with settings attributes
         app = FastAPI(
             title=self.settings.title,
             version=self.settings.version,
@@ -38,10 +69,13 @@ class FastAPIBuilder:
             webhooks=self.settings.webhooks,
         )
 
+        # Add custom middleware from settings if defined
         if self.settings.middleware:
             for mw in self.settings.middleware:
+                # Each middleware requires its class and additional options passed as kwargs
                 app.add_middleware(mw['middleware_class'], **mw['options'])
 
+        # Add CORS middleware if origins are specified in settings
         if self.settings.cors_origins:
             app.add_middleware(
                 CORSMiddleware,
@@ -51,4 +85,5 @@ class FastAPIBuilder:
                 allow_headers=["*"],
             )
 
+        # Return the fully configured FastAPI instance
         return app
