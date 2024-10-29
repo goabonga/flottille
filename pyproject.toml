@@ -35,14 +35,6 @@ fastapi = "^0.115.4"
 uvicorn = "^0.32.0"
 pydantic-settings = "^2.6.0"
 
-[tool.commitizen]
-name = "cz_conventional_commits"
-version = "0.0.0"
-tag_format = "$major.$minor.$patch$prerelease"
-version_files = [
-    "pyproject.toml:version",
-]
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
