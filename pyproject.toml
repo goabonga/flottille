@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "flottille"
+version = "0.0.0"
+description = "Flottille is a Python library designed to simplify the development and production deployment of data science and machine learning models"
+authors = ["Chris <goabonga@pm.me>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+  { include = "flottille", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-cov = "^5.0.0"
+commitizen = "^3.29.1"
+ruff = "^0.6.9"
+mypy = "^1.13.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
